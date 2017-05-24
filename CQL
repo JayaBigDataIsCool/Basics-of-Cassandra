@@ -1,0 +1,51 @@
+CQL Fundamentals:
+CQL
+Keyspaces
+Tables
+Core Datatypes
+
+CQL is similar to SQL - No Joins supported
+
+Keyspace:
+Top level container / namespace / schema
+Similar to RDBMS Schema
+Syntax - 
+CREATE KEYSPACE ABCD
+WITH REPLICATION = {
+  'class': 'SimpleStrategy',
+  'replication_factor': 1
+ };
+ 
+Replication parameter is mandatory
+
+USE ABCD;
+
+CREATE TABLE table1 (
+  column1 TEXT,
+  column2 INT,
+  PRIMARY KEY (column1)
+ );
+ 
+DataTypes:
+TEXT - UTF8 
+int - Signed 32 Bits
+timestamp - date and time 64 bit integer
+
+UUID - Universally unique identifier - Similar to GUID in Microsoft world - generated via uuid()
+TIMEUUID - embeds a timestamp value - sortable - generated via now() - No 2 timestamps can be same
+
+Why do we need UUID and TIMEUUID:
+Distributed systems, almost impossible to generate sequence number. With the help of GUID and TIMEUUID, we get a guaranteed Unique number.
+
+
+INSERT is similar to SQL
+Primary key is mandatory for Insert
+
+SELECT is similar - does not support joins
+
+COPY command - imports and exports the CSV file
+copy table1 (col1, col2) FROM 'abcd.csv'
+
+copy table1 (col1, col2) FROM 'abcd.csv'
+WITH HEADER=true; - ----> to skip the first line in the file
+
