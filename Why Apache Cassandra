@@ -1,0 +1,16 @@
+My Application Needs:
+Scalability
+Reliability
+Ease of Use
+
+RDBMS Problems:
+Single point of failure
+Scaling complexity
+Reliability Issues
+Difficulty to serve users worldwide
+
+Why Cassandra:
+Data can be stored goegraphically closer to clients
+Reliability
+Linear Scale Performance
+Peers instead of Master Slave
