@@ -49,3 +49,41 @@ copy table1 (col1, col2) FROM 'abcd.csv'
 copy table1 (col1, col2) FROM 'abcd.csv'
 WITH HEADER=true; - ----> to skip the first line in the file
 
+
+HANDS ON:
+================
+
+
+CREATE KEYSPACE killrvideo
+WITH REPLICATION = {
+  'class': 'SimpleStrategy',
+  'replication_factor': 1
+ };
+
+use killrvideo;
+
+DESCRIBE KEYSPACE killrvideo;
+
+use killrvideo;
+
+CREATE TABLE videos (
+    id UUID PRIMARY KEY,
+    added_date TIMESTAMP,
+    title TEXT
+);
+
+insert into videos (id,added_date, title)
+values(uuid(), '2014-01-29', 'Cassandra History');
+
+select * from videos;
+
+insert into videos (id,added_date, title)
+values(uuid(), '2012-04-03', 'Cassandra & SSDs');
+
+TRUNCATE videos;
+
+COPY videos(id, added_date, title)
+FROM 'data-files/videos.csv'
+WITH HEADER=TRUE;
+
+select * from videos;
